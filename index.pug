@@ -1,0 +1,18 @@
+doctype html
+html
+  head
+    title Pug + Vue Example
+    script(src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js")
+  body
+    #app
+      h1 {{ message }}
+      p 使用Pug和Vue.js來呈現
+
+      // Example of Vue component usage
+      div(v-for="room in rooms" :key="room.name")
+        h3 {{ room.name }}
+        p {{ room.eng }}
+        p {{ room.price }}
+    
+    // 引入 JavaScript 文件
+    script(src="./app.js")
