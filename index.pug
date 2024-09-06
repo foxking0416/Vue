@@ -4,15 +4,65 @@ html
     title Pug + Vue Example
     script(src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js")
   body
-    #app
-      h1 {{ message }}
-      p 使用Pug和Vue.js來呈現
+    button(type="button") Click Me
+    br
+    input(type="checkbox", id="myCheckbox", name="myCheckbox", value="checkboxValue")
+    label(for="myCheckbox") Check me
+    br
+    input(type="radio", id="option1", name="myRadio", value="option1")
+    label(for="option1") Option 1
 
-      // Example of Vue component usage
-      div(v-for="room in rooms" :key="room.name")
-        h3 {{ room.name }}
-        p {{ room.eng }}
-        p {{ room.price }}
-    
+    input(type="radio", id="option2", name="myRadio", value="option2")
+    label(for="option2") Option 2
+    br
+    select(name="mySelect", id="mySelect")
+      option(value="option1") Option 1
+      option(value="option2") Option 2
+      option(value="option3") Option 3
+  
+    table(class="styled-table")
+      thead
+        tr
+          th Header 1
+          th Header 2
+          th Header 3
+      tbody
+        tr
+          td Row 1, Cell 1
+          td Row 1, Cell 2
+          td Row 1, Cell 3
+        tr
+          td Row 2, Cell 1
+          td Row 2, Cell 2
+          td Row 2, Cell 3
+        tr
+          td Row 3, Cell 1
+          td Row 3, Cell 2
+          td Row 3, Cell 3
+    #app
+      .container-fluid
+        .row
+          .col-sm-9
+            .row
+              .col-sm-4(v-for="myroom in rooms2")
+                room3(v-bind:room_data1="myroom", v-bind:hotel_discount="discount1")
+
+
+    template#room4
+      .room_col
+        .cover
+          h3 {{ room_data1.name }}
+        .info
+          h5 {{ room_data1.eng }}
+          h5 {{ room_data1.discount }}*{{ hotel_discount }} = {{ final_discount_show }}折
+          h5 {{ room_data1.price }}*{{ room_data1.discount }}*{{ hotel_discount }}
+          h5 {{ final_discount }}
+          h5 {{ final_discount_show }}
+          h5 {{ final_price }}
+          h4 TWD 
+            s {{ room_data1.price }}
+            span {{ final_price }}
+
+   
     // 引入 JavaScript 文件
     script(src="./app.js")
